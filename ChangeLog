@@ -1,3 +1,5 @@
+****** Release 0.1.2 ******
+
 2016-01-19  Yu-Jie Lin <livibetter@gmail.com>
 	* nInvaders.c: fixed different lives, weite, level, and skill_level
 	  variables in objects.
