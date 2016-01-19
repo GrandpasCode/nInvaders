@@ -33,8 +33,11 @@
 
 #define FPS 50
 
-int lives;
-long score;
+int weite = 0;
+long score = 0;
+int lives = 0;
+int level = 0;
+int skill_level = 0;
 int status; // status handled in timer
 
 #define GAME_LOOP 1
