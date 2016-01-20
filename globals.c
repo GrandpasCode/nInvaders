@@ -23,6 +23,7 @@
  
  
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "globals.h"
 
@@ -83,7 +84,10 @@ void waitForReturn()
 {
 	char b[2];
 	fprintf(stderr, "...Please press <Enter> to read on...");
-	fgets(b, sizeof(b), stdin);
+	if (NULL == fgets(b, sizeof(b), stdin)) {
+		fprintf(stderr, "error on fgets");
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**

@@ -3,6 +3,8 @@ AC_INIT(ufo.c)
 
 dnl Checks for programs.
 AC_PROG_CC
+AC_PROG_CC_C99
+CFLAGS="$CFLAGS -Wall -Wextra"
 
 dnl Checks for libraries.
 dnl Replace `main' with a function in -lncurses:

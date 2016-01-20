@@ -19,7 +19,7 @@ History
 
 nInvaders was statred in 2002 (according to copyright year) by Thomas Dettbarn, and later Mike Saarna, Alexander Hollinger, Sebastian Gutsfeld, and Matthias Thar had contributed. However, the development ceased in October, 2003.
 
-In January, 2016, `Grandpa's Code`_ attempted to continue.
+In January, 2016, `Grandpa's Code`_ attempted to continue, and it's been updated to gnu99.
 
 .. _Grandpa's Code: https://bitbucket.org/grandpas/code
 

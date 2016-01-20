@@ -24,6 +24,7 @@
  
 #include "highscore.h"
 #include <stdio.h>	
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -154,10 +155,16 @@ static void fget_HighScoreData (HighScoreEntry *hs_e, FILE* fp)
 {
         int  n;
         for (n = 0; n < MAX_HIGHSCORE_ENTRIES; n++) {
-                fscanf ( fp, "%i %s\n", &hs_e->score, hs_e->name );
+                if (EOF == fscanf ( fp, "%i %s\n", &hs_e->score, hs_e->name ) && ferror(fp)) {
+			fprintf(stderr, "error on fscanf when reading highscore entries");
+			exit(EXIT_FAILURE);
+		}
 		hs_e++;
         }
-        fscanf (fp, "\n");
+	if (EOF == fscanf ( fp, "\n") && ferror(fp)) {
+		fprintf(stderr, "error on fscanf when reading highscore entries");
+		exit(EXIT_FAILURE);
+	}
 }
 
 
@@ -181,7 +188,10 @@ HighScore readHighScore (){
 	if (( fp_HighScore = fopen (HIGHSCORE_FILE, "r") ) != NULL ) {
 		
 		/* read header */
-		fscanf (fp_HighScore, "%[^\n]\nv%[^\n]\n\n", hs_id, hs_version);
+		if (EOF == fscanf (fp_HighScore, "%[^\n]\nv%[^\n]\n\n", hs_id, hs_version) && ferror(fp_HighScore)) {
+			fprintf(stderr, "error on fscanf when reading highscore header");
+			exit(EXIT_FAILURE);
+		}
 	
 		if ( strcmp (hs_id, HIGHSCORE_ID) != 0 ) {
 			puts ("(EE) readHighScore: highscore file has wrong header");
@@ -194,11 +204,20 @@ HighScore readHighScore (){
 		}
 	
 		/* read data */
-		fscanf (fp_HighScore, "beginner\n");
-	        fget_HighScoreData (hs.beginner, fp_HighScore); 
-		fscanf (fp_HighScore, "normal\n");
+		if (EOF == fscanf (fp_HighScore, "beginner\n") && ferror(fp_HighScore)) {
+			fprintf(stderr, "error on fscanf when reading highscore beginner data");
+			exit(EXIT_FAILURE);
+		}
+		fget_HighScoreData (hs.beginner, fp_HighScore); 
+		if (EOF == fscanf (fp_HighScore, "normal\n") && ferror(fp_HighScore)) {
+			fprintf(stderr, "error on fscanf when reading highscore normalr data");
+			exit(EXIT_FAILURE);
+		}
 		fget_HighScoreData (hs.normal,   fp_HighScore);
-		fscanf (fp_HighScore, "expert\n");
+		if (EOF == fscanf (fp_HighScore, "expert\n") && ferror(fp_HighScore)) {
+			fprintf(stderr, "error on fscanf when reading highscore expect data");
+			exit(EXIT_FAILURE);
+		}
 		fget_HighScoreData (hs.expert,   fp_HighScore);
 		
 		/* close file */

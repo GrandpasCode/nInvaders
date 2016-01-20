@@ -95,6 +95,8 @@ static void evaluateCommandLine(int argc, char **argv)
 
 static void finish(int sig)
 {
+	(void) sig;
+
         endwin();
 	showGplShort();
 	

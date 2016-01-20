@@ -411,7 +411,7 @@ void titleScreenDisplay()
 	static int fShowHighscore = 0;
 
 	/* toggle between different alien types and highscores */ 
-	if ((frame = frame++ % 180) == 0) {
+	if ((frame = (frame + 1) % 180) == 0) {
 		alien_type = 0;
 		fShowHighscore = 0;
 	} else if (frame == 30) {
@@ -600,6 +600,8 @@ void refreshScreen()
  */
 static void finish(int sig)
 {
+	(void) sig;
+
 	endwin();	// <curses.h> reset terminal into proper non-visual mode
 	exit(0);
 }

@@ -3,9 +3,20 @@
 
 	* configure: removed.
 
-	* configure.ac: renamed from configure.in.
+	* configure.ac: renamed from configure.in, set C99 and turned on -Wall
+	-Wextra.
+
+	* global.c (waitForReturn): fixed fgets unhandled returned value.
+
+	* nInvaders.c (finish), view.c (finish): fixed unused function
+	  parameter.
+
+	* view.c (titleScreenDisplay): fixed undefined operation.
 
 	* view.c (graphicEngineInit): hid cursor.
+
+	* highscore.c (fget_HighScoreData, readHighScore): fixed fscanf
+	  unhandled returned value.
 
 
 ****** Release 0.1.2 ******
