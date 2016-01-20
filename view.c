@@ -616,6 +616,7 @@ void graphicEngineInit()
 	(void) nonl();			// <curses.h> disable translation return/ newline for detection of return key
 	(void) cbreak();		// <curses.h> do not buffer typed characters, use at once
 	(void) noecho();		// <curses.h> do not echo typed characters
+	curs_set(0);
 	start_color();			// <curses.h> use colors
 	init_pair(RED, COLOR_RED, COLOR_BLACK);		// <curses.h> define color-pair
 	init_pair(GREEN, COLOR_GREEN, COLOR_BLACK);	// <curses.h> define color-pair

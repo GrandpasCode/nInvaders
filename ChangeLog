@@ -1,3 +1,7 @@
+2016-01-20 Yu-Jie Lin <livibetter@gmail.com>
+	* view.c (graphicEngineInit): hid cursor.
+
+
 ****** Release 0.1.2 ******
 
 2016-01-19  Yu-Jie Lin <livibetter@gmail.com>
