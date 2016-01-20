@@ -1,4 +1,10 @@
 2016-01-20 Yu-Jie Lin <livibetter@gmail.com>
+	* autogen.sh: added.
+
+	* configure: removed.
+
+	* configure.ac: renamed from configure.in.
+
 	* view.c (graphicEngineInit): hid cursor.
 
 

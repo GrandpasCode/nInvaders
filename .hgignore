@@ -1,4 +1,6 @@
 syntax: glob
 Makefile
+autom4te.cache
 config.*
+configure
 nInvaders
